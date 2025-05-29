@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("${file-storage.base-url:/api/files}")
+@RequestMapping("${file-storage.base-url:/files}")
 public class FileStorageController {
 
     private final FileStorageService fileStorageService;
@@ -32,7 +32,7 @@ public class FileStorageController {
         FileMetadata metadata = fileStorageService.storeFile(file, customPath);
 
         String downloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/files/download/")
+                .path("/files/download/")
                 .path(metadata.getId())
                 .toUriString();
 
@@ -54,7 +54,7 @@ public class FileStorageController {
                 .map(file -> {
                     FileMetadata metadata = fileStorageService.storeFile(file, customPath);
                     String downloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                            .path("/api/files/download/")
+                            .path("/files/download/")
                             .path(metadata.getId())
                             .toUriString();
 

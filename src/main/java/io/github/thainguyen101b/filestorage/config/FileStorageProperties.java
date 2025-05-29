@@ -3,26 +3,17 @@ package io.github.thainguyen101b.filestorage.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
+import java.util.List;
+
 @ConfigurationProperties(prefix = "file-storage")
 public class FileStorageProperties {
 
-    private final boolean enabled;
-    private final String uploadDir;
-    private final long maxFileSize;
-    private final String[] allowedExtensions;
-    private final boolean createDirectories;
-    private final String baseUrl;
-
-    @ConstructorBinding
-    public FileStorageProperties(boolean enabled, String uploadDir, long maxFileSize, String[] allowedExtensions, boolean createDirectories, String baseUrl) {
-        this.enabled = enabled;
-        this.uploadDir = uploadDir != null ? uploadDir : "./uploads";
-        this.maxFileSize = maxFileSize > 0 ? maxFileSize : 10485760;
-        this.allowedExtensions = allowedExtensions != null ? allowedExtensions :
-                new String[]{"jpg", "jpeg", "png", "gif", "pdf", "doc", "docx", "txt"};
-        this.createDirectories = createDirectories;
-        this.baseUrl = baseUrl != null ? baseUrl : "/api/files";
-    }
+    private boolean enabled = true;
+    private String uploadDir = "./uploads";
+    private long maxFileSize = 10485760;
+    private List<String> allowedExtensions = List.of("jpg", "jpeg", "png", "gif", "pdf", "doc", "docx", "txt");
+    private boolean createDirectories = true;
+    private String baseUrl = "/files";
 
     public boolean isEnabled() {
         return enabled;
@@ -36,7 +27,7 @@ public class FileStorageProperties {
         return maxFileSize;
     }
 
-    public String[] getAllowedExtensions() {
+    public List<String> getAllowedExtensions() {
         return allowedExtensions;
     }
 
@@ -46,5 +37,29 @@ public class FileStorageProperties {
 
     public String getBaseUrl() {
         return baseUrl;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setUploadDir(String uploadDir) {
+        this.uploadDir = uploadDir;
+    }
+
+    public void setMaxFileSize(long maxFileSize) {
+        this.maxFileSize = maxFileSize;
+    }
+
+    public void setAllowedExtensions(List<String> allowedExtensions) {
+        this.allowedExtensions = allowedExtensions;
+    }
+
+    public void setCreateDirectories(boolean createDirectories) {
+        this.createDirectories = createDirectories;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 }

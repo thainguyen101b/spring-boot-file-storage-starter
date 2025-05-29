@@ -21,7 +21,7 @@ A simple and extensible Spring Boot starter for file storage operations.
 <dependency>
     <groupId>io.github.thainguyen101b</groupId>
     <artifactId>spring-boot-file-storage-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -34,20 +34,20 @@ file-storage:
   max-file-size: 10485760 # 10MB
   allowed-extensions: jpg,jpeg,png,gif,pdf,doc,docx,txt
   create-directories: true
-  base-url: /api/files
+  base-url: /files
 ```
 
 ### 3. Use the APIs
 
 That's it! The following endpoints are automatically available:
 
-- `POST /api/files/upload` - Upload single file
-- `POST /api/files/upload/multiple` - Upload multiple files
-- `GET /api/files/download/{fileId}` - Download file
-- `GET /api/files/metadata/{fileId}` - Get file metadata
-- `GET /api/files` - List all files
-- `DELETE /api/files/{fileId}` - Delete file
-- `DELETE /api/files` - Delete all files
+- `POST /files/upload` - Upload single file
+- `POST /files/upload/multiple` - Upload multiple files
+- `GET /files/download/{fileId}` - Download file
+- `GET /files/metadata/{fileId}` - Get file metadata
+- `GET /files` - List all files
+- `DELETE /files/{fileId}` - Delete file
+- `DELETE /files` - Delete all files
 
 ## Configuration Properties
 
@@ -58,7 +58,7 @@ That's it! The following endpoints are automatically available:
 | `file-storage.max-file-size`      | `10485760`                          | Maximum file size in bytes (10MB) |
 | `file-storage.allowed-extensions` | `jpg,jpeg,png,gif,pdf,doc,docx,txt` | Allowed file extensions           |
 | `file-storage.create-directories` | `true`                              | Auto-create upload directories    |
-| `file-storage.base-url`           | `/api/files`                        | Base URL for endpoints            |
+| `file-storage.base-url`           | `/files`                        | Base URL for endpoints            |
 
 
 ## Advanced Usage

@@ -10,8 +10,10 @@ import org.junit.jupiter.api.io.TempDir;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.nio.file.Path;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LocalFileStorageServiceTest {
 
@@ -19,18 +21,16 @@ class LocalFileStorageServiceTest {
     Path tempDir;
 
     private LocalFileStorageService fileStorageService;
-    private FileStorageProperties properties;
 
     @BeforeEach
     void setUp() {
-        properties = new FileStorageProperties(
-                true,
-                tempDir.toString(),
-                10485760L,
-                new String[]{"jpg", "jpeg", "png", "txt"},
-                true,
-                "/api/files"
-        );
+        FileStorageProperties properties = new FileStorageProperties();
+        properties.setUploadDir(tempDir.toString());
+        properties.setMaxFileSize(10485760L);
+        properties.setAllowedExtensions(List.of("jpg", "jpeg", "png", "txt"));
+        properties.setCreateDirectories(true);
+        properties.setBaseUrl("/files");
+
         fileStorageService = new LocalFileStorageService(properties);
     }
 

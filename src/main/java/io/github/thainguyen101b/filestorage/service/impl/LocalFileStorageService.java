@@ -167,7 +167,7 @@ public class LocalFileStorageService implements FileStorageService {
     }
 
     private boolean isAllowedExtension(String extension) {
-        return Arrays.stream(properties.getAllowedExtensions())
+        return properties.getAllowedExtensions().stream()
                 .anyMatch(allowed -> allowed.equalsIgnoreCase(extension));
     }
 }
