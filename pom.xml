@@ -29,7 +29,7 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/thainguyen101b/spring-boot-storage-starter.git</connection>
+        <connection>scm:git:git://github.com/thainguyen101b/spring-boot-file-storage-starter.git</connection>
         <developerConnection>scm:git:ssh://github.com:thainguyen101b/spring-boot-file-storage-starter.git</developerConnection>
         <url>https://github.com/thainguyen101b/spring-boot-file-storage-starter/tree/main</url>
     </scm>
@@ -86,12 +86,31 @@
                 <version>3.3.0</version>
                 <executions>
                     <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <failOnWarnings>false</failOnWarnings>
+                    <quiet>true</quiet>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -110,28 +129,16 @@
             </plugin>
 
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
 </project>
