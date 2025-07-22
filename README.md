@@ -2,6 +2,9 @@
 
 A simple and extensible Spring Boot starter for file storage operations.
 
+> [!CAUTION]
+> Deprecated
+
 ## Features
 
 - Local file system storage (AWS S3 support coming soon)

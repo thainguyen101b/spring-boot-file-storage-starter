@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Spring Boot Storage Starter</name>
-    <description>A Spring Boot starter for file storage operations</description>
+    <description>This library is deprecated</description>
     <url>https://github.com/thainguyen101b/spring-boot-file-storage-starter</url>
 
     <licenses>
